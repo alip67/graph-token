@@ -1,7 +1,6 @@
 # Graph Tokenization Framework
 
-This repository provides tools for **synthetic graph generation** and **task-specific graph tokenization** across multiple network types and reasoning tasks.  
-It converts graphs into **text-based token sequences** suitable for training and evaluating large language models (LLMs)/ Pure Transformers on graph reasoning.
+This repository provides tools for **synthetic graph generation** and **task-specific graph tokenization** across multiple network types and reasoning tasks. It converts graphs into **text-based token sequences** suitable for training and evaluating large language models (LLMs)/ Pure Transformers on graph reasoning.
 
 ---
 
@@ -23,6 +22,30 @@ Each task defines its own reasoning format (e.g., node degree prediction, reacha
 | **complete** | *Complete graphs* — every node is connected to every other node. |
 | **star** | *Star graphs* — a single central hub connected to all leaf nodes. |
 | **path** | *Path (chain) graphs* — nodes arranged in a linear sequence. |
+
+---
+
+## Supported Graph Reasoning Tasks
+
+Each graph task defines a unique reasoning objective applied to the generated graphs.  
+These tasks are implemented in `graph_task.py` and can be selected via the `--task` argument when running the task generator.
+
+### Available Tasks
+
+| Task | Description |
+|------|-------------|
+| **EdgeExistence** | Determines whether an edge exists between two given nodes (`<q> u v <p> yes/no`). |
+| **NodeDegree** | Predicts the degree (number of edges) of a given node (`<q> node_id <p> d[k]`). |
+| **NodeCount** | Counts the total number of nodes in the graph (`<q> node_count <p> n[k]`). |
+| **EdgeCount** | Counts the total number of edges in the graph (`<q> edge_count <p> m[k]`). |
+| **ConnectedNodes** | Lists all nodes connected to a specific node (`<q> neighbors u <p> {v1 v2 ...}`). |
+| **CycleCheck** | Checks whether the graph contains a cycle (`<q> has_cycle <p> yes/no`). |
+| **DisconnectedNodes** | Identifies isolated or disconnected nodes in the graph (`<q> isolated_nodes <p> {…}`). |
+| **Reachability** | Determines whether a path exists between two nodes (`<q> u v <p> yes/no`). |
+| **ShortestPath** | Computes the shortest path length between two nodes (`<q> u v <p> len[k]`). |
+| **MaximumFlow** | Calculates the maximum flow between two nodes using unit capacities (`<q> u v <p> f[k]`). |
+| **TriangleCounting** | Counts the total number of triangles in the graph (`<q> triangle_count <p> t[k]`). |
+| **NodeClassification** | Predicts the community or class label of each node (e.g., from an SBM graph) (`<q> class u <p> c[k]`). |
 
 ---
 
