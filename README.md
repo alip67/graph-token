@@ -30,8 +30,10 @@ Each task defines its own reasoning format (e.g., node degree prediction, reacha
 
 Each graph is represented as a **token sequence** capturing its structure and the reasoning task.
 
-Example format:
+**Example format:**
+```text
 <bos> 0 1 <e> 1 2 <e> ... <n> 0 1 2 ... <q> [source] <p> [prediction] <eos>
+```
 
 **Where:**
 - `<bos>` → Begin of sequence  
@@ -60,9 +62,9 @@ Generate random graphs for each algorithm and dataset split (`train`, `valid`, `
 ./graphtoken/graph_generator.sh
 ```
 
-The generated files are stored in:
-graphs/<algorithm>/<split>/*.graphml
-
+```markdown
+The generated files are stored in: `graphs/<algorithm>/<split>/*.graphml`
+```
 
 ### 2. Generating Task Files
 
@@ -71,10 +73,8 @@ Tokenize the generated graphs into JSON files for specific graph reasoning tasks
 ```sh
 ./graphtoken/task_generator.sh
 ```
-
-This will create task-specific tokenized samples in:
-
-tasks/<task>/<algorithm>/<split>/<graph_id>.json
+```markdown
+This will create task-specific tokenized samples in: `tasks/<task>/<algorithm>/<split>/<graph_id>.json`
 
 Each `.json` file contains a list of tokenized samples, for example:
 
@@ -89,7 +89,7 @@ Each `.json` file contains a list of tokenized samples, for example:
     "text": "<bos> 0 1 <e> 1 2 <e> ... <n> 0 1 2 <q> 1 <p> d1 <eos>"
   }
 ]
-
+```
 
 ### Output Structure
 
