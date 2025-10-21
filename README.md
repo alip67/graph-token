@@ -62,9 +62,8 @@ Generate random graphs for each algorithm and dataset split (`train`, `valid`, `
 ./graphtoken/graph_generator.sh
 ```
 
-```markdown
+
 The generated files are stored in: `graphs/<algorithm>/<split>/*.graphml`
-```
 
 ### 2. Generating Task Files
 
@@ -73,7 +72,7 @@ Tokenize the generated graphs into JSON files for specific graph reasoning tasks
 ```sh
 ./graphtoken/task_generator.sh
 ```
-```markdown
+
 This will create task-specific tokenized samples in: `tasks/<task>/<algorithm>/<split>/<graph_id>.json`
 
 Each `.json` file contains a list of tokenized samples, for example:
@@ -95,21 +94,20 @@ Each `.json` file contains a list of tokenized samples, for example:
 
 After running the task generator, the tokenized graph files will be saved in the following directory format:
 
-graphtoken/
-│
-├── graph_generator.sh          # Shell script for graph generation
-├── task_generator.sh           # Shell script for task-based tokenization
-│
-├── graph_generator.py          # Generates and saves random graphs
-├── graph_task_generator.py     # Tokenizes graphs for each reasoning task
-├── graph_task.py               # Defines all task classes (NodeDegree, Reachability, etc.)
-├── graph_task_utils.py         # I/O utilities (pure Python, no TensorFlow dependency)
-│
-├── graphs/                     # Generated raw graphs (.graphml)
-│   └── <algorithm>/<split>/
-│
-└── tasks/                      # Tokenized task datasets (JSON)
-    └── <task>/<algorithm>/<split>/
+graphtoken/  
+│  
+├── `graph_generator.sh` # Shell script for graph generation  
+├── `task_generator.sh` # Shell script for task-based tokenization  
+│  
+├── `graph_generator.py` # Generates and saves random graphs  
+├── `graph_task_generator.py` # Tokenizes graphs for each reasoning task  
+├── `graph_task.py` # Defines all task classes (NodeDegree, Reachability, etc.)  
+├── `graph_task_utils.py` # I/O utilities (pure Python, no TensorFlow dependency)  
+│  
+├── `graphs/` # Generated raw graphs (`.graphml`) → `graphs/<algorithm>/<split>/`  
+│  
+└── `tasks/` # Tokenized task datasets (`.json`) → `tasks/<task>/<algorithm>/<split>/`
+
 
 
 ## Contact us
